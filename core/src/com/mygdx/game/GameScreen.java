@@ -19,7 +19,7 @@ public class GameScreen extends ScreenAdapter {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
         batch.draw(redcircleImg, 350, 450);
-        batch.draw(uparrowImg, 350, 450);
+        batch.draw(uparrowImg, 415, 515);
         batch.end();
 	}
 
