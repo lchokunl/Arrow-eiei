@@ -23,6 +23,9 @@ public class GameScreen extends ScreenAdapter {
         leftarrowImg = new Texture("left-arrow.png");
         rightarrowImg = new Texture("right-arrow.png");
         
+        randCircle = rand.nextInt(1)+1;
+        randArrow = rand.nextInt(3)+1;
+        
     
     }
 	public void render (float delta) {
