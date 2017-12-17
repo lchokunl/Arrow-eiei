@@ -15,6 +15,7 @@ public class GameScreen extends ScreenAdapter {
 	private Texture downarrowImg;
 	private Texture leftarrowImg;
 	private Texture rightarrowImg;
+	private Texture background;
 	private int randCircle;
 	private int randArrow;
 	private int score;
@@ -28,13 +29,15 @@ public class GameScreen extends ScreenAdapter {
         downarrowImg = new Texture("down-arrow.png");
         leftarrowImg = new Texture("left-arrow.png");
         rightarrowImg = new Texture("right-arrow.png");
+        background = new Texture("background.jpg");
         score = 0;
-        font = new BitmapFont();
+        //font = new BitmapFont();
     
     }
 	public void render (float delta) {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
+        batch.draw(background, 0, 0);
         Random rand = new Random();
         if(Gdx.input.isKeyJustPressed(Keys.UP) || Gdx.input.isKeyJustPressed(Keys.DOWN) || Gdx.input.isKeyJustPressed(Keys.LEFT) || Gdx.input.isKeyJustPressed(Keys.RIGHT)){
         	randCircle = rand.nextInt(2)+1;
@@ -62,7 +65,7 @@ public class GameScreen extends ScreenAdapter {
         	score += 10;
         }
         
-        
+        //font.draw(batch, "Score : " + score, 700, 60);
         
         batch.end();
 	}
