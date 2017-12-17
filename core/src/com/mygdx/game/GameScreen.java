@@ -12,10 +12,13 @@ public class GameScreen extends ScreenAdapter {
 	private Texture downarrowImg;
 	private Texture leftarrowImg;
 	private Texture rightarrowImg;
+	private int randCircle;
+	private int randArrow;
 	 
     public GameScreen(ArrowGame arrowGame) {
         this.arrowGame = arrowGame;
-        Random rand = new Random();
+        //Random rand = new Random();
+        //Random rand2 = new Random();
         redcircleImg = new Texture("red-circle.png");
         bluecircleImg = new Texture("blue-circle.png");
         uparrowImg = new Texture("up-arrow.png");
@@ -23,16 +26,40 @@ public class GameScreen extends ScreenAdapter {
         leftarrowImg = new Texture("left-arrow.png");
         rightarrowImg = new Texture("right-arrow.png");
         
-        randCircle = rand.nextInt(1)+1;
-        randArrow = rand.nextInt(3)+1;
+       // for(int i=0;i<100;i++) {
+        	//randCircle = rand.nextInt(1)+1;
+        	//randArrow = rand2.nextInt(3)+1;
+     //   }
         
     
     }
 	public void render (float delta) {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
-        batch.draw(redcircleImg, 350, 450);
-        batch.draw(uparrowImg, 415, 515);
+        Random rand = new Random();
+        //Random rand2 = new Random();
+        randCircle = rand.nextInt(2)+1;
+    	randArrow = rand.nextInt(4)+1;
+        if(randCircle == 1) {
+        	batch.draw(redcircleImg, 350, 450);
+        }
+        else if(randCircle == 2) {
+        	batch.draw(bluecircleImg, 350, 450);
+        }
+        if(randArrow == 1) {
+        	batch.draw(uparrowImg, 415, 515);
+        }
+        else if(randArrow == 2) {
+        	batch.draw(downarrowImg, 415, 515);
+        }
+        else if(randArrow == 3) {
+        	batch.draw(leftarrowImg, 415, 515);
+        }
+        else if(randArrow == 4) {
+        	batch.draw(rightarrowImg, 415, 515);
+        }
+        
+        
         batch.end();
 	}
 
