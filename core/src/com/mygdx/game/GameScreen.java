@@ -1,4 +1,6 @@
 package com.mygdx.game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -29,8 +31,10 @@ public class GameScreen extends ScreenAdapter {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
         Random rand = new Random();
-        randCircle = rand.nextInt(2)+1;
-    	randArrow = rand.nextInt(4)+1;
+        if(Gdx.input.isKeyJustPressed(Keys.UP)){
+        	randCircle = rand.nextInt(2)+1;
+        	randArrow = rand.nextInt(4)+1;
+        }
         if(randCircle == 1) {
         	batch.draw(redcircleImg, 350, 450);
         }
