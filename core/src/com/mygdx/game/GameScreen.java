@@ -17,27 +17,18 @@ public class GameScreen extends ScreenAdapter {
 	 
     public GameScreen(ArrowGame arrowGame) {
         this.arrowGame = arrowGame;
-        //Random rand = new Random();
-        //Random rand2 = new Random();
         redcircleImg = new Texture("red-circle.png");
         bluecircleImg = new Texture("blue-circle.png");
         uparrowImg = new Texture("up-arrow.png");
         downarrowImg = new Texture("down-arrow.png");
         leftarrowImg = new Texture("left-arrow.png");
         rightarrowImg = new Texture("right-arrow.png");
-        
-       // for(int i=0;i<100;i++) {
-        	//randCircle = rand.nextInt(1)+1;
-        	//randArrow = rand2.nextInt(3)+1;
-     //   }
-        
     
     }
 	public void render (float delta) {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
         Random rand = new Random();
-        //Random rand2 = new Random();
         randCircle = rand.nextInt(2)+1;
     	randArrow = rand.nextInt(4)+1;
         if(randCircle == 1) {
