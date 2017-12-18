@@ -21,6 +21,10 @@ public class GameScreen extends ScreenAdapter {
 	private int score;
 	private boolean isPlaying;
 	private BitmapFont font;
+	private int totalTime = 30;
+	private float deltaTime;
+	private long startTime;
+		
 	
     public GameScreen(ArrowGame arrowGame) {
         this.arrowGame = arrowGame;
@@ -34,13 +38,31 @@ public class GameScreen extends ScreenAdapter {
         score = 0;
         font = new BitmapFont();
         isPlaying = false;
+        
+        startTime = System.currentTimeMillis();
     }
+   /*
+    public void render() {
+    	renderPlay();
+    	(if(totalTime < 0) {
+    		renderOver();
+    	}
+    }
+    public void renderOver(){
+    	SpriteBatch batch = arrowGame.batch;
+    	batch.draw(background,0,0);
+    	if(Gdx.input.isKeyJustPressed(Keys.SPACE))){
+    		totalTime = 30;
+    	}
+    }
+    */
 	public void render (float delta) {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
         batch.draw(background, 0, 0);
         Random rand = new Random();
-        
+        deltaTime = Gdx.graphics.getDeltaTime();
+        totalTime -= (int)(deltaTime);
         if (!isPlaying) {
         	//if(Gdx.input.isKeyJustPressed(Keys.UP) || Gdx.input.isKeyJustPressed(Keys.DOWN) || Gdx.input.isKeyJustPressed(Keys.LEFT) || Gdx.input.isKeyJustPressed(Keys.RIGHT)){
         		randCircle = rand.nextInt(2) + 1;
@@ -115,8 +137,12 @@ public class GameScreen extends ScreenAdapter {
         		}	
         	}
         }
+        long curTime = System.currentTimeMillis();
+        int actualTime = (int) (totalTime - (curTime - startTime) / 1000);
+        
         System.out.println("score: " + score);
-        font.draw(batch, "Score : " + score, 550, 60);
+        font.draw(batch, "Score : " + score, 350, 150);
+        font.draw(batch, "Time : " + actualTime, 350, 300);
         font.getData().setScale(5f);
         
         batch.end();
