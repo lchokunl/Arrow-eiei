@@ -137,8 +137,15 @@ public class GameScreen extends ScreenAdapter {
         		}	
         	}
         }
+       
         long curTime = System.currentTimeMillis();
         int actualTime = (int) (totalTime - (curTime - startTime) / 1000);
+        
+        if(actualTime < 0) {
+        	actualTime = 0;
+        	isPlaying = false;
+        	batch.draw(background, 0, 0);
+        }
         
         System.out.println("score: " + score);
         font.draw(batch, "Score : " + score, 350, 150);
