@@ -34,7 +34,7 @@ public class GameScreen extends ScreenAdapter {
         downarrowImg = new Texture("down-arrow.png");
         leftarrowImg = new Texture("left-arrow.png");
         rightarrowImg = new Texture("right-arrow.png");
-        background = new Texture("background.jpg");
+        background = new Texture("background2.jpg");
         score = 0;
         font = new BitmapFont();
         isPlaying = false;
@@ -59,7 +59,7 @@ public class GameScreen extends ScreenAdapter {
 	public void render (float delta) {
 		SpriteBatch batch = arrowGame.batch;
         batch.begin();
-        batch.draw(background, 0, 0);
+        batch.draw(background, 0, 30);
         Random rand = new Random();
         deltaTime = Gdx.graphics.getDeltaTime();
         totalTime -= (int)(deltaTime);
@@ -144,7 +144,7 @@ public class GameScreen extends ScreenAdapter {
         if(actualTime < 0) {
         	actualTime = 0;
         	isPlaying = false;
-        	batch.draw(background, 0, 0);
+        	batch.draw(background, 0, 30);
         }
         
         System.out.println("score: " + score);
